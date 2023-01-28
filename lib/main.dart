@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final FlutterLocalization localization = FlutterLocalization.instance;
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      supportedLocales: localization.supportedLocales,
+      localizationsDelegates: localization.localizationsDelegates,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -64,4 +68,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+class Lang {
+  static final all = [
+    const Locale('en'),
+    #english,
+    const Locale('es'),
+    #spanish,
+    const Locale('de'),
+    #german,
+    const Locale('sw'),
+    #kiswahili,
+    const Locale('fr'),
+    #french,
+  ];
 }
